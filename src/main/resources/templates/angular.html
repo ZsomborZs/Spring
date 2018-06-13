@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Materialize CSS -->
+<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"></link-->
+
+<!-- JavaScript for: jQuery, angular, materialize, and angular-materialize. All of which are needed. -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/button.css}"
+	href="../../css/button.css" />
+
+</head>
+<!--style></style-->
+<body ng-app="MyApp">
+
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Spring Good</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/page">Home</a></li>
+					<li><a href="/list">Collection</a></li>
+					<li><a href="/form">Form</a></li>
+					<li><a href="/getpeople">Sample</a></li>
+					<li><a href="/greeting">Greeting</a></li>
+					<li class="active"><a href="#">Update</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<md-content ng-controller="AppCtrl as ctrl" layout-padding="20"
+			ng-cloak="" class="datepickerdemoBasicUsage" ng-app="MyApp">
+
+		<!--form name = "projectForm"-->
+		<form action="#" th:action="@{/ang}" th:object="${person}" method="post">
+		
+			<md-input-container class="md-block"> 
+				<label>First Name</label> 
+				<input ng-model="userName" type="text" th:field="*{firstName}">
+			<!--div ng-messages = "userName.$error"><div ng-message = "required">This is required.</div></div-->
+			</input> </md-input-container>
+			
+			<md-input-container class="md-block">
+				<label>Last Name</label> 
+				<input type="text" th:field="*{lastName}"> 
+			</input> </md-input-container>
+
+			<md-input-container style="margin-right: 10px;">
+				<label>Sex</label> <md-select ng-model="select.value"> 
+				<md-option ng-repeat="value in select.choices" value="{{value}}">{{value}}</md-option>
+				</md-select> </md-input-container>
+			<input ng-model="select.value" th:field="${gend.text}" ng-hide="true"></input>
+
+			<input time="false" date="true" mdc-datetime-picker="" type="text"
+				id="date" placeholder="Date" click-outside-to-close="true"
+				show-todays-date="" ng-model="ctrl.myDate" min-date="minDate"
+				max-date="maxDate" class="md-input" th:field="*{birthDate}"
+				ng-hide="true">
+			</input>
+
+			<div flex-gt-xs="">
+				<h6>Birth Date</h6>
+				<md-datepicker ng-model="ctrl.myDate" md-current-view="year"
+					md-placeholder="Enter date"></md-datepicker>
+			</div>
+
+			<p></p>
+			<!-- input type="submit" name="submit" value="Submit" /-->
+			<md-button type="submit" name="submit" class="md-raised md-primary">SUBMIT</md-button>
+			<md-button type="submit" name="submit" class="md1">SUBMIT</md-button>
+			<md-button class="md-raised md-primary">Primary</md-button>
+		</form>
+		<!--/form--> </md-content>
+		<!--div class="container">
+ 		 <div class="box rotate"></div>
+	</div-->
+	</div>
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<!-- Angular Material Library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+	<!-- Application bootstrap  -->
+	<script type="text/javascript">
+		angular.module('MyApp',
+				[ 'ngMaterial', 'ngMessages', 'ui.materialize' ]).controller(
+				'AppCtrl', function($scope) {
+					this.myDate = new Date();
+					this.isOpen = false;
+					this.userName = "";
+					$scope.select0 = [ {
+						"type" : "MALE"
+					}, {
+						"type" : "FEMALE"
+					}, {
+						"type" : "ROBOT"
+					} ];
+
+					this.button = 'ADD PERSON';
+					$scope.select = {
+						value : "Option1",
+						choices : [ "FEMALE", "MALE", "MIXED", "ROBOT" ]
+					};
+				});
+		<!--angular.module('BlankApp', [ 'ngMaterial' ]);-->
+	</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Thymeleaf II.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}"
+	href="../../css/main.css" />
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Spring Good</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/page">Home</a></li>
+					<li><a href="/list">Collection</a></li>
+					<li><a href="/form">Form</a></li>
+					<li class="active"><a href="#">Sample</a></li>
+					<li><a href="/greeting">Greeting</a></li>
+					<li><a href="/ang">Update</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1>People Request</h1>
+			<h2>
+				<div th:text="'First Name: ' + ${fname}"></div>
+				<div th:text="'Last Name: ' + ${lname}"></div>
+				<div th:text="'Sex: ' + ${sex}"></div>
+				<div th:text="'Birth Date: ' + ${bdate}"></div>
+			</h2>
+			<h3>Hint</h3>
+			<button type="button" class="btn btn-info" data-toggle="collapse"
+				data-target="#demo">Simple</button>
+			<div id="demo" class="collapse">
+				<div>Add to the URL:</div>
+				<div>?name=sample</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<script type="text/javascript"
+		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

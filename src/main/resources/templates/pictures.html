@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Minimal example</title>
+
+<!-- Materialize CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"></link>
+<!-- JavaScript for: jQuery, angular, materialize, and angular-materialize. All of which are needed. -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+
+<!-- JS app -->
+<!-- script type="text/javascript" src="app.js"></script-->
+</head>
+<body ng-app="materializeApp" ng-controller="BodyController">
+	<main>
+
+	<div class="row">
+		<div class="section col s4">
+			<div input-field="">
+				<select ng-model="select.value" material-select="">
+					<option ng-repeat="value in select.choices">{{value}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="section col s8">
+			<h5>
+				You selected: <b>{{select.value}}</b>
+			</h5>
+		</div>
+		<input ng-model="select.value" ng-hide="false">{{size.type}}</input>
+	</div>
+
+	<div carousel="carousel carousel-slider" duration='5' no-wrap='true'
+		indicators='true' fullWidth='true'>
+		<a class="carousel-item" href="javascript:void(0);"><img
+			src="images/image1.jpg"></img></a> <a class="carousel-item"
+			href="javascript:void(0);"><img src="images/image2.jpg"></img></a> <a
+			class="carousel-item" href="javascript:void(0);"><img
+			src="images/image3.jpg"></img></a> <a class="carousel-item"
+			href="javascript:void(0);"><img src="images/image4.jpg"></img></a> <a
+			class="carousel-item" href="javascript:void(0);"><img
+			src="images/image5.jpg"></img></a>
+	</div>
+
+
+	<div class="carousel carousel-slider center" data-indicators="true">
+		<div class="carousel-fixed-item center">
+			<a class="btn waves-effect white grey-text darken-text-2">button</a>
+		</div>
+		<div class="carousel-item red white-text" href="#one!">
+			<h2>First Panel</h2>
+			<p class="white-text">This is your first panel</p>
+
+		</div>
+		<div class="carousel-item amber white-text" href="#two!">
+			<h2>Second Panel</h2>
+			<p class="white-text">This is your second panel</p>
+		</div>
+		<div class="carousel-item green white-text" href="#three!">
+			<h2>Third Panel</h2>
+			<p class="white-text">This is your third panel</p>
+		</div>
+		<div class="carousel-item blue white-text" href="#four!">
+			<h2>Fourth Panel</h2>
+			<p class="white-text">This is your fourth panel</p>
+		</div>
+	</div>
+
+	<a class="waves-effect waves-light btn-large" href="">Wave</a>
+
+	<div class="parallax-container">
+		<div class="parallax">
+			<img src="images/image1.jpg"></img>
+		</div>
+	</div>
+	<div class="section white">
+		<div class="row container">
+			<h2 class="header">Parallax</h2>
+			<p class="grey-text text-darken-3 lighten-3">Parallax is an
+				effect where the background content or image in this case, is moved
+				at a different speed than the foreground content while scrolling.</p>
+		</div>
+	</div>
+	<div class="parallax-container">
+		<div class="parallax">
+			<img src="images/image2.jpg"></img>
+		</div>
+	</div>
+	</main>
+
+	<script type="text/javascript">
+		var app = angular.module('materializeApp', [ 'ui.materialize' ])
+				.controller(
+						'BodyController',
+						[
+								"$scope",
+								function($scope) {
+									$scope.select = {
+										value : "Option1",
+										choices : [ "Option1", 
+										            "Option2",
+													"Option3"]
+									};
+									$('.carousel.carousel-slider').carousel({
+										fullWidth : true
+									});
+								} ]);
+		$(document).ready(function() {
+			$('.parallax').parallax();
+		});
+	</script>
+
+</body>
+</html>
